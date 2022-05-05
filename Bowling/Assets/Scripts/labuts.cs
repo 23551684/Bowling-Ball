@@ -17,7 +17,7 @@ public class labuts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ball.GetComponent<ball>().isFinished && again)
+        if(ball.GetComponent<ball>().isFinished || again)
         {
             if (ball.transform.childCount < 5)
             {

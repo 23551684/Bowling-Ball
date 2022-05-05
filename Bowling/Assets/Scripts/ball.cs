@@ -6,6 +6,7 @@ using DG.Tweening;
 public class ball : MonoBehaviour
 {
     public float speed;
+    public float boost;
     public GameObject prefRagdoll, cam, strikeText;
     public LevelManager levelManager;
     public ParticleSystem blood, strike;
@@ -62,12 +63,11 @@ public class ball : MonoBehaviour
                 horizontal = (Input.mousePosition.x - mousePosition.x) / Screen.width * 1.5f;
                 mousePosition = Input.mousePosition;
             }
+
            
         }
-        
 
-
-
+        boost = Mathf.Clamp(boost + Time.deltaTime * 1f, 2, 1);
         transform.position += new Vector3(0, 0, 1) * Time.deltaTime * -speed * backForce + new Vector3(1, 0, 0) * horizontal * -2f;
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -1.2f, 1.2f), transform.position.y, transform.position.z);
         backForce = Mathf.Clamp(backForce + Time.deltaTime * 3.25f, -1, 1);
