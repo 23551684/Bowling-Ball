@@ -31,8 +31,7 @@ public class ball : MonoBehaviour
     {
         
         controlBall();
-        
-        if (transform.localScale.x < 0.3)
+        if (transform.localScale.x < 0.3 || transform.childCount<4)
         {
 
             StartCoroutine(dead());
@@ -85,7 +84,7 @@ public class ball : MonoBehaviour
             {
                 rotz = 0;
             }
-            rotx -= 2;
+            rotx -= 1;
             Quaternion target = Quaternion.Euler(rotx, 0, rotz);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
 
@@ -134,7 +133,7 @@ public class ball : MonoBehaviour
         }
         if (other.gameObject.tag == "labut")
         {
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.2f);
             if (other.GetComponentInParent<labuts>().isStrike)
             {
                 
